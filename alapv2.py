@@ -20,7 +20,7 @@ import difflib
 # list containing alaps
 #alap_list = []
 
-filename = 'shankara.txt'
+filename = 'raga_data/malhar.txt'
 
 myduration = 0.75
 transpose = 4
@@ -43,6 +43,8 @@ similarity_sort = True
 # length of alap (no. of beats)
 length = 16
 number_of_alaps = 8
+
+chosen_instrument = music21.instrument.Piano()
 
 
 # dictionary mapping swaras to codes
@@ -229,7 +231,7 @@ def play(mylist, mystream, myduration = myduration):
 
 def play_taan():
     mystream = music21.stream.Stream()
-    mystream.append(music21.instrument.Piano())
+    mystream.append(chosen_instrument)
     for i in range(16):
         #append_mukhda(mystream)
         mylist = alap_list[random.randrange(0,length_alap_list,1)]
@@ -295,7 +297,8 @@ def alap_main():
 
     #______________________________________________________________play
     mystream = music21.stream.Stream()
-##    mystream.append(music21.instrument.Flute())
+    #instrument
+    mystream.append(chosen_instrument)
     played_list=[]
     for i in range(number_of_alaps):
         count=0
